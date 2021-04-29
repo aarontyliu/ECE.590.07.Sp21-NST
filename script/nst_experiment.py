@@ -34,9 +34,9 @@ if __name__ == "__main__":
 
     cnns = {
         "vgg11":     models.vgg11(pretrained=True).features.to(device).eval(),
-        "vgg_19":    models.vgg19(pretrained=True).features.to(device).eval(),
+        "vgg19":    models.vgg19(pretrained=True).features.to(device).eval(),
         "vgg11_bn":  models.vgg11_bn(pretrained=True).features.to(device).eval(),
-        "vgg_19_bn": models.vgg19_bn(pretrained=True).features.to(device).eval(),
+        "vgg19_bn": models.vgg19_bn(pretrained=True).features.to(device).eval(),
         "resnet18":  models.resnet18(pretrained=True).to(device).eval(),
         "resnet34":  models.resnet34(pretrained=True).to(device).eval()
     }
