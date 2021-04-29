@@ -1,3 +1,5 @@
+# reference: https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
