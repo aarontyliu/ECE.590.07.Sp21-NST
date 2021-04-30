@@ -19,8 +19,8 @@ if __name__ == "__main__":
     content_dir = "../data/content_images"
     style_dir   = "../data/style_images"
 
-    cnn_normalization_mean = torch.tensor([0.485, 0.456, 0.406]).to(device)
-    cnn_normalization_std  = torch.tensor([0.229, 0.224, 0.225]).to(device)
+    means  = torch.tensor([0.485, 0.456, 0.406]).to(device)
+    stds  = torch.tensor([0.229, 0.224, 0.225]).to(device)
 
     num_steps = 500
     style_weight, content_weight = 1000000, 1
@@ -58,8 +58,8 @@ if __name__ == "__main__":
                     input_img = content_img.clone().detach().requires_grad_(True)
                     output, history = style_transfer(
                         cnn,
-                        cnn_normalization_mean,
-                        cnn_normalization_std,
+                        means,
+                        stds,
                         content_img,
                         style_img,
                         input_img,
