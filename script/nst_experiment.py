@@ -6,7 +6,7 @@ import torch
 import torchvision.models as models
 from tqdm import tqdm
 
-from style_transfer import run_style_transfer
+from style_transfer import style_transfer
 from utils import image_loader, iterate_images, savefig
 
 warnings.filterwarnings("ignore")
@@ -22,7 +22,6 @@ if __name__ == "__main__":
     cnn_normalization_mean = torch.tensor([0.485, 0.456, 0.406]).to(device)
     cnn_normalization_std  = torch.tensor([0.229, 0.224, 0.225]).to(device)
 
-    # desired depth layers to compute style/content losses :
     num_steps = 500
     style_weight, content_weight = 1000000, 1
 
@@ -33,12 +32,12 @@ if __name__ == "__main__":
     style_tensors  = [image_loader(style_img) for style_img in style_images]
 
     cnns = {
-        "vgg11":     models.vgg11(pretrained=True).features.to(device).eval(),
+        "vgg11":    models.vgg11(pretrained=True).features.to(device).eval(),
         "vgg19":    models.vgg19(pretrained=True).features.to(device).eval(),
-        "vgg11_bn":  models.vgg11_bn(pretrained=True).features.to(device).eval(),
+        "vgg11_bn": models.vgg11_bn(pretrained=True).features.to(device).eval(),
         "vgg19_bn": models.vgg19_bn(pretrained=True).features.to(device).eval(),
-        "resnet18":  models.resnet18(pretrained=True).to(device).eval(),
-        "resnet34":  models.resnet34(pretrained=True).to(device).eval()
+        "resnet18": models.resnet18(pretrained=True).to(device).eval(),
+        "resnet34": models.resnet34(pretrained=True).to(device).eval()
     }
 
     histories = {key: {} for key in cnns}
@@ -57,7 +56,7 @@ if __name__ == "__main__":
                 filename = "+".join([content_title, style_title])
                 if style_img.size() == content_img.size():
                     input_img = content_img.clone().detach().requires_grad_(True)
-                    output, history = run_style_transfer(
+                    output, history = style_transfer(
                         cnn,
                         cnn_normalization_mean,
                         cnn_normalization_std,

@@ -3,7 +3,7 @@ import numpy as np
 from module import get_input_optimizer, get_style_model_and_losses
 
 
-def run_style_transfer(
+def style_transfer(
     cnn,
     normalization_mean,
     normalization_std,
@@ -16,15 +16,13 @@ def run_style_transfer(
     verbose=False,
     use_resnet=False,
 ):
-    """Run the style transfer."""
-    # print('Building the style transfer model..')
+
     history = []
     model, style_losses, content_losses = get_style_model_and_losses(
         cnn, normalization_mean, normalization_std, style_img, content_img
     )
     optimizer = get_input_optimizer(input_img)
 
-    # print('Optimizing..')
     run = [0]
     while run[0] <= num_steps:
 

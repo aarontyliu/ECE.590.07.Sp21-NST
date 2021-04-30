@@ -18,31 +18,20 @@ def iterate_images(dir: str) -> list:
 # reference: https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
 def image_loader(image_name):
     # desired size of the output image
-    imsize = 512 if torch.cuda.is_available() else 128  # use small size if no gpu
+    imsize = 512 if torch.cuda.is_available() else 128
 
     loader = transforms.Compose(
         [
-            transforms.Resize(imsize),  # scale imported image
+            transforms.Resize(imsize),
             transforms.CenterCrop(imsize),
             transforms.ToTensor(),
         ]
-    )  # transform it into a torch tensor
+    )
 
     image = Image.open(image_name)
-    # fake batch dimension required to fit network's input dimensions
     image = loader(image).unsqueeze(0)
-    return image.to(device, torch.float)
 
-# reference: https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
-def imshow(tensor, title=None):
-    unloader = transforms.ToPILImage()
-    image = tensor.cpu().clone()  # we clone the tensor to not do changes on it
-    image = image.squeeze(0)  # remove the fake batch dimension
-    image = unloader(image)
-    plt.imshow(image)
-    if title is not None:
-        plt.title(title)
-    plt.pause(0.001)  # pause a bit so that plots are updated
+    return image.to(device, torch.float)
 
 
 def savefig(tensor, path=None):
