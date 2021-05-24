@@ -8,9 +8,9 @@ cd scripts
 python nst_experiment.py
 ```
 
-Example images
+# Example (VGG-11 with BN)
 
 
-Solarized dark             |  清趣
-:-------------------------:|:-------------------------:
-![](https://github.com/tienyuliu/ECE.590.07.Sp21-NST/blob/main/output/vgg11/duke%20broadhead%2B赵逸梅%20-%20清趣.png)  |  ![](https://github.com/tienyuliu/ECE.590.07.Sp21-NST/blob/main/data_in_net/style_images/赵逸梅%20-%20清趣.png)
+Duke Broadhead Center     | Stylized Image |  清趣
+:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/tienyuliu/ECE.590.07.Sp21-NST/blob/main/data_in_net/content_images/duke%20broadhead.png) | ![](https://github.com/tienyuliu/ECE.590.07.Sp21-NST/blob/main/output/vgg11/duke%20broadhead%2B赵逸梅%20-%20清趣.png)  |  ![](https://github.com/tienyuliu/ECE.590.07.Sp21-NST/blob/main/data_in_net/style_images/赵逸梅%20-%20清趣.png)
