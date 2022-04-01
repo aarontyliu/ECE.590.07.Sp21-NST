@@ -8,7 +8,7 @@ cd scripts
 python nst_experiment.py
 ```
 
-# Example (VGG-11 with BN)
+# Example
 
 
 Duke Broadhead Center     | Stylized Image |  清趣
